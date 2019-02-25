@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import SavedList from './Movies/SavedList';
 import MovieList from './Movies/MovieList';
@@ -27,3 +28,11 @@ export default class App extends Component {
     );
   }
 }
+
+const rootElement= document.getElementById('root');
+ReactDOM.render(
+  <Router>
+    <App />
+  </Router>,
+  rootElement
+);
