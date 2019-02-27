@@ -1,3 +1,5 @@
+
+
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
@@ -21,12 +23,17 @@ export default class App extends Component {
 
   render() {
     return (
+    
+    <div>
+      <SavedList list={this.state.savedList} />
       <div>
-        <SavedList list={this.state.savedList} />
-        <Route path='/movies/' exact component={MovieList} />
-        <Route path='/movies/:id' component={Movie} />
+        <Route exact path="/" component={MovieList} 
+          render={props  => (
+            <MovieList {...props} moviesList= {this.state.movie} />
+          )}/>
+        <Route path= "/movie/:id" component={Movie} />
       </div>
-
+    </div>
       
     );
   }

@@ -1,8 +1,9 @@
+
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 
-import { Link } from 'react-router-dom';
-
+import Movie from './Movie';
 
 
 export default class MovieList extends Component {
@@ -27,20 +28,21 @@ export default class MovieList extends Component {
   render() {
     return (
       <div className="movie-list">
-        {this.state.movies.map(movie => (
-          <MovieDetails key={movie.id} movie={movie} />
-        ))}
-      </div>
-    );
+        {this.state.movies.map(movie => 
+          <Link to={`movie/${movie.id}`}>
+            <MovieDetails key={movie.id} movie={movie} />
+          </Link>
+        )}
+      </div>);
+    
   }
 }
 
 function MovieDetails({ movie }) {
-  const { title, director, metascore, stars, id } = movie;
+  const { title, director, metascore, stars } = movie;
   console.log(movie);
   return (
 
-    <Link to={`/movies/${id}`}></Link>
     <div className="movie-card">
       <h2>{title}</h2>
 
@@ -60,5 +62,6 @@ function MovieDetails({ movie }) {
         </div>
       ))}
     </div>
+    
   );
 }
