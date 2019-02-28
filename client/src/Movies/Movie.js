@@ -1,5 +1,9 @@
+
+
 import React, { Component } from 'react';
 import axios from 'axios';
+
+
 
 export default class Movie extends Component {
   constructor(props) {
@@ -10,8 +14,9 @@ export default class Movie extends Component {
   }
 
   componentDidMount() {
-    // change this line to grab the id passed on the URL
-    const id = 1;
+     // change this line to grab the id passed on the URL
+    // const id = 1;
+    const id = this.props.match.params.id;
     this.fetchMovie(id);
   }
 
@@ -47,7 +52,7 @@ export default class Movie extends Component {
       <div className="save-wrapper">
         <div className="movie-card">
           <h2>{title}</h2>
-          <div className="movie-director">
+        <div className="movie-director">
             Director: <em>{director}</em>
           </div>
           <div className="movie-metascore">
